@@ -1,8 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {Category} from "./entities/Category";
-import {Book} from "./entities/Book";
-
-
+import { Book } from '../entities/Book';
 
 const books: Book[] = [
   {
@@ -27,5 +24,4 @@ export class BooksService {
   findOneBook(id: string): Book | null {
     return books.find((b) => b.id === id);
   }
-
 }

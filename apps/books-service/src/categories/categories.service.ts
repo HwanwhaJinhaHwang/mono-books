@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {Category} from "../books/entities/Category";
+import { Category } from '../entities/Category';
 const categories: Category[] = [
   {
     id: '0',
@@ -12,7 +12,6 @@ const categories: Category[] = [
 ];
 @Injectable()
 export class CategoriesService {
-
   listBookCategories(): Category[] {
     return categories;
   }

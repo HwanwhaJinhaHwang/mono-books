@@ -1,12 +1,12 @@
-import {Controller, Get, Param} from '@nestjs/common';
-import {Book} from "./entities/Book";
-import {ApiParam, ApiResponse, ApiTags} from "@nestjs/swagger";
-import {BooksService} from "./books.service";
+import { Controller, Get, Param } from '@nestjs/common';
+import { Book } from '../entities/Book';
+import { ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { BooksService } from './books.service';
 
 @ApiTags('books')
 @Controller('books')
 export class BooksController {
-  constructor(private readonly booksService: BooksService) { }
+  constructor(private readonly booksService: BooksService) {}
 
   @Get()
   @ApiResponse({
@@ -28,7 +28,7 @@ export class BooksController {
   @ApiParam({
     name: 'id',
     required: true,
-    type: String
+    type: String,
   })
   findOne(@Param() params) {
     return this.booksService.findOneBook(params.id);
