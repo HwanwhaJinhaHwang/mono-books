@@ -1,0 +1,18 @@
+sources:
+  - name: Books
+    handler:
+      openapi:
+        endpoint: http://localhost:3333/
+        source: ../../dist/apps/books-service/books.json
+transforms:
+  - filterSchema:
+      filters:
+        - Query.!book
+  - rename:
+      renames:
+        - from:
+            type: Query
+            field: categories
+          to:
+            type: Query
+            field: booksCategories

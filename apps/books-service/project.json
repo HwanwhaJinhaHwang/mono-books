@@ -49,6 +49,29 @@
         "jestConfig": "apps/books-service/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "mesh-start": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "cwd": "apps/books-service",
+        "parallel": false,
+        "commands": [
+          "mesh start"
+        ]
+      },
+      "dependsOn": ["mesh-build"]
+    },
+    "mesh-build": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "cwd": "apps/books-service",
+        "parallel": false,
+        "commands": [
+          "mesh build"
+        ]
+      }
     }
   },
   "tags": []
