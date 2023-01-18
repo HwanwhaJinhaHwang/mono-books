@@ -1,54 +1,67 @@
-import styled from '@emotion/styled';
-import NxWelcome from './nx-welcome';
+import * as React from 'react';
+import fetch from 'cross-fetch';
+import { gql, useLazyQuery } from '@apollo/client';
 
-import { Route, Routes, Link } from 'react-router-dom';
+interface Post {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
 
-const StyledApp = styled.div`
-  // Your style here
-`;
+function App() {
+  const [posts, setPosts] = React.useState<Post[]>([]);
+  const [isLoading, setIsLoading] = React.useState(false);
 
-export function App() {
+  const fetchPosts = async () => {
+    setIsLoading(true);
+    await fetch('https://jsonplaceholder.typicode.com/posts')
+      .then((res) => res.json())
+      .then((posts) => setPosts(posts as Post[]));
+
+    setIsLoading(false);
+  };
+
+  // GraphQL API
+  const GET_POSTS = gql`
+    query posts {
+      posts {
+        userId
+        id
+        title
+        body
+      }
+    }
+  `;
+
+  const [postsGql, setPostsGql] = React.useState<Post[]>([]);
+  const [runQuery, { loading, data }] = useLazyQuery(GET_POSTS, {
+    onCompleted: (d) => setPostsGql(d?.posts),
+  });
+
   return (
-    <StyledApp>
-      <NxWelcome title="books" />
+    <main className="App">
+      <h1>MSW Testing Library Example</h1>
+      {isLoading && <span aria-label="loading">Loading...</span>}
+      {posts.length > 0 &&
+        posts.map((post) => (
+          <article key={post.id}>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
+          </article>
+        ))}
+      <button onClick={() => fetchPosts()}>Fetch Posts</button>
 
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/page-2">Page 2</Link>
-          </li>
-        </ul>
-      </div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              This is the generated root route.{' '}
-              <Link to="/page-2">Click here for page 2.</Link>
-            </div>
-          }
-        />
-        <Route
-          path="/page-2"
-          element={
-            <div>
-              <Link to="/">Click here to go back to root page.</Link>
-            </div>
-          }
-        />
-      </Routes>
-      {/* END: routes */}
-    </StyledApp>
+      {loading && <span aria-label="loading">Loading...</span>}
+      {postsGql.length > 0 &&
+        postsGql.map((post) => (
+          <article key={post.id}>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
+          </article>
+        ))}
+      <button onClick={() => runQuery()}>Fetch Posts GraphQL</button>
+    </main>
   );
 }
 
