@@ -23,6 +23,9 @@ describe('App gql test', function () {
       })
     ).toBeDefined();
 
+    // link 클릭
+    await userEvent.click(screen.getByRole('link', { name: 'Posts' }));
+
     await userEvent.click(screen.getByRole('button', { name: 'Fetch Posts' }));
 
     // await waitForElementToBeRemoved(() => screen.queryByLabelText('loading'));
@@ -50,6 +53,9 @@ describe('App gql test', function () {
         level: 1,
       })
     ).toBeDefined();
+
+    // link 클릭
+    await userEvent.click(screen.getByRole('link', { name: 'Posts' }));
 
     await userEvent.click(
       screen.getByRole('button', { name: 'Fetch Posts GraphQL' })
