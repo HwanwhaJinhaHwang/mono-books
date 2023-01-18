@@ -1,9 +1,7 @@
-import { render } from '@testing-library/react';
-
 import Posts from './posts';
 import { client } from '../apollo-client';
 import { ApolloProvider } from '@apollo/client';
-import { screen, userEvent } from '../utils/test-utils';
+import { render, screen, userEvent } from '../utils/test-utils';
 import { posts } from '../mocks/handlers';
 
 describe('Posts', () => {
