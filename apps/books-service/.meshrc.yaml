@@ -5,14 +5,27 @@ sources:
         endpoint: http://localhost:3333/
         source: ../../dist/apps/books-service/books.json
 transforms:
-  - filterSchema:
-      filters:
-        - Query.!book
   - rename:
+      mode: bare | wrap
       renames:
         - from:
             type: Query
-            field: categories
+            field: BooksController_listBooks
           to:
             type: Query
-            field: booksCategories
+            field: books
+        - from:
+            type: Query
+            field: BooksController_findOne
+          to:
+            type: Query
+            field: book
+        - from:
+            type: Query
+            field: CategoriesController_listBookCategories
+          to:
+            type: Query
+            field: categories
+  - filterSchema:
+      filters:
+        - Query.!AppController_getData
