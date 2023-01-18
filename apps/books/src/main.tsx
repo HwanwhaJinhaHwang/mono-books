@@ -6,8 +6,7 @@ import { client } from './apollo-client';
 import App from './app/app';
 
 const prepare = async () => {
-  console.log(process.env.NODE_ENV);
-  if (process.env.NODE_ENV === 'development') {
+  if (import.meta.env.MODE === 'development') {
     import('./mocks/browser').then(({ worker }) => {
       worker.start();
     });
