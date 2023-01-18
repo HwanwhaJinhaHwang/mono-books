@@ -69,6 +69,7 @@
         "cwd": "apps/books-service",
         "parallel": false,
         "commands": [
+          "yarn nx run books-service:serve &",
           "mesh build"
         ]
       }
