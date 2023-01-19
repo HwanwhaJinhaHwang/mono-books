@@ -54,5 +54,6 @@
       }
     }
   },
+  "implicitDependencies": ["books-service"],
   "tags": []
 }

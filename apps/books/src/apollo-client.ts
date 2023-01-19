@@ -1,9 +1,11 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 import fetch from 'cross-fetch';
+import { API_GQL_HOST } from './constants/url';
+
 const cache = new InMemoryCache();
 
 const link = new HttpLink({
-  uri: 'https://jsonplaceholder.ir/graphql',
+  uri: API_GQL_HOST,
 
   // Use explicit `window.fetch` so that outgoing requests
   // are captured and deferred until the Service Worker is ready.
