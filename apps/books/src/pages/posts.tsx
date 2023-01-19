@@ -42,10 +42,9 @@ export function Posts(props: PostsProps) {
     }
   `;
 
-  const [postsGql, setPostsGql] = React.useState<Post[]>([]);
-  const [runQuery, { loading, data }] = useLazyQuery(GET_POSTS, {
-    onCompleted: (d) => setPostsGql(d?.posts),
-  });
+  const [runQuery, { loading, data }] = useLazyQuery<{ posts: Post[] }>(
+    GET_POSTS
+  );
   return (
     <StyledPosts>
       {isLoading && <span aria-label="loading">Loading...</span>}
@@ -59,13 +58,12 @@ export function Posts(props: PostsProps) {
       <button onClick={() => fetchPosts()}>Fetch Posts</button>
 
       {loading && <span aria-label="loading">Loading...</span>}
-      {postsGql.length > 0 &&
-        postsGql.map((post) => (
-          <article key={post.id}>
-            <h2>{post.title}</h2>
-            <p>{post.body}</p>
-          </article>
-        ))}
+      {data?.posts?.map((post) => (
+        <article key={post.id}>
+          <h2>{post.title}</h2>
+          <p>{post.body}</p>
+        </article>
+      ))}
       <button onClick={() => runQuery()}>Fetch Posts GraphQL</button>
     </StyledPosts>
   );

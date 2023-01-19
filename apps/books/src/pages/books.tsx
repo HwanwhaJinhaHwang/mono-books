@@ -29,13 +29,12 @@ export function Books(props: BooksProps) {
     <StyledBooks>
       <h1>Welcome to Books!</h1>
       <button onClick={handleRestClick}>Click REST books</button>
-      {booksState &&
-        booksState.map((book) => (
-          <article key={book.id}>
-            <h2>{book.title}</h2>
-            <p>{book.authorId}</p>
-          </article>
-        ))}
+      {booksState?.map((book) => (
+        <article key={book.id}>
+          <h2>{book.title}</h2>
+          <p>{book.authorId}</p>
+        </article>
+      ))}
     </StyledBooks>
   );
 }
