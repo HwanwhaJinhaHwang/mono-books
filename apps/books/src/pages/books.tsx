@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 import * as React from 'react';
+import { useState } from 'react';
 import { gql, useLazyQuery } from '@apollo/client';
+import { API_GQL_HOST, API_REST_HOST } from '@mono-books/constants';
 
 /* eslint-disable-next-line */
 export interface BooksProps {}
@@ -30,7 +30,7 @@ const GET_CATEGORIES = gql`
 export function Books(props: BooksProps) {
   const [booksState, setBooksState] = useState<Book[] | undefined>();
   const fetchRESTBooks = async () => {
-    const res = await axios.get('http://localhost:3333/api/books');
+    const res = await axios.get(`${API_REST_HOST}/books`);
     setBooksState(res.data);
   };
 

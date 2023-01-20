@@ -1,6 +1,6 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 import fetch from 'cross-fetch';
-import { API_GQL_HOST } from './constants/url';
+import { API_GQL_HOST } from '@mono-books/constants';
 
 const cache = new InMemoryCache();
 
