@@ -10,6 +10,7 @@ msw monorepo example with nx, vite, graphql-mesh, nestjs
 
 다음, 간단히 books 앱을 실행해보려면 터미널을 열고 workspace root 경로에서 `yarn nx run books:serve` 명령 실행    
 
+# books-service as a backend
 ## books-service running (REST, GQL)
 터미널을 열고 다음 커맨드를 입력하여 books-service:mesh-start 태스크를 실행한다.    
 `yarn nx run books-service:mesh-start`  
@@ -20,6 +21,7 @@ msw monorepo example with nx, vite, graphql-mesh, nestjs
 2. 1번에서 생성 된 OAS json파일을 타겟으로 하여 mesh build 명령이 실행된다. 이 명령은 OAS를 통합 graphql schema를 만들어낸다.  
 3. 2번에서 생성된 통합 graphql schema가 있는 .mesh/ 디렉터리를 타겟으로 mesh start 명령이 실행되며 http://localhost:4000/graphql 로 gql api를 서비스한다. 브라우저에서 http://localhost:4000 으로 접속하면 Yoga GraphiQL 플레이그라운드를 이용할 수 있다.  
 
+# books as a frontend
 ## books app running (development)
 터미널을 열고 다음 커맨드를 입력하여 books:serve:development 태스크를 실행한다.  
 `yarn nx run books:serve`  
