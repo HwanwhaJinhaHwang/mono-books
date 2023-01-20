@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import { client } from './apollo-client';
 import App from './app/app';
+import './styles.css';
 
 const prepare = async () => {
   if (import.meta.env.MODE === 'development') {

@@ -16,13 +16,13 @@ describe('Books', () => {
 
     await userEvent.click(
       screen.getByRole('button', {
-        name: 'Click REST books',
+        name: 'REST books',
       })
     );
 
     books.forEach((book) => {
       expect(
-        screen.getByRole('heading', { name: book.title, level: 2 })
+        screen.getByRole('heading', { name: book.title, level: 3 })
       ).toBeDefined();
       expect(screen.getByText(book.authorId)).toBeDefined();
     });
@@ -36,7 +36,7 @@ describe('Books', () => {
     expect(baseElement).toBeTruthy();
 
     const gqlCategoriesButton = screen.getByRole('button', {
-      name: 'Click GQL categories',
+      name: 'GQL categories',
     });
     expect(gqlCategoriesButton).toBeDefined();
 
