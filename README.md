@@ -25,6 +25,7 @@ msw monorepo example with nx, vite, graphql-mesh, nestjs
 `yarn nx run books:serve:development`
 
 브라우저에서 http://localhost:4200 으로 접속하고 개발자도구의 network탭을 열어보면 msw 서비스워커에 의해 api가 모킹 되는 것을 확인 할 수 있다.  
+때문에 books-service 가 실행되지 않더라도 앱이 정상동작한다.  
 
 ### books app running (production)
 터미널을 열고 다음 커맨드를 실행하여 books:serve:development 태스크를 실행한다.  
