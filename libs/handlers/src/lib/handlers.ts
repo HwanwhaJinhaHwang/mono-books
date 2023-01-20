@@ -1,6 +1,5 @@
-// src/mocks/handlers.js
 import { rest, graphql } from 'msw';
-import { API_GQL_HOST, API_REST_HOST } from '../constants/url';
+import { API_GQL_HOST, API_REST_HOST } from '@mono-books/constants';
 
 export const books = [
   {

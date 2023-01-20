@@ -1,8 +1,8 @@
+import { ApolloProvider } from '@apollo/client';
+import { books, categories } from '@mono-books/handlers';
 import { render, screen, userEvent } from '../utils/test-utils';
 
 import Books from './books';
-import { books, categories } from '../mocks/handlers';
-import { ApolloProvider } from '@apollo/client';
 import { client } from '../apollo-client';
 
 describe('Books', () => {
