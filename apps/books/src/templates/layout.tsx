@@ -12,8 +12,11 @@ const navigation = [
 const Layout = () => {
   const location = useLocation();
   return (
-    <div className="bg-slate-100 h-screen">
-      <Disclosure as="nav" className="bg-gray-800">
+    <div className="bg-slate-100 dark:bg-gray-900 h-screen">
+      <Disclosure
+        as="nav"
+        className="bg-slate-100 dark:bg-gray-900 border-b-[1px] border-b-gray-400 dark:border-b-gray-500"
+      >
         {({ open }) => (
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
