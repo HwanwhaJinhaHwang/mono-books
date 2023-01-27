@@ -15,8 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@mono-books/cn": ["libs/cn/src/index.ts"],
       "@mono-books/constants": ["libs/constants/src/index.ts"],
-      "@mono-books/handlers": ["libs/handlers/src/index.ts"]
+      "@mono-books/handlers": ["libs/handlers/src/index.ts"],
+      "@mono-books/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
